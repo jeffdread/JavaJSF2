@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+	<h:outputStylesheet library="css" name="table-style.css" />
+</h:head>
+<h:body bgcolor="white">
+	<h:link value="Panier" outcome="cart" rendered="#{caddie.vide}"/> <b> </b><h:outputText value="Total : #{caddie.shoppingCart.subtotal} Euro" rendered="#{caddie.vide}"/> 
+	<hr />
+	
+	<h1>Liste des Produits</h1>
+	<hr />
+	<h:form>
+		<h:dataTable value="#{produitBean.produitList}" var="c"
+			styleClass="client-table" headerClass="client-table-header"
+			rowClasses="client-table-odd-row,client-table-even-row">
+
+			<h:column>
+				<!-- column header -->
+				<f:facet name="header">
+					<h:outputLabel value="ID" />
+				</f:facet> 
+				<!-- row record -->
+				<h:outputText value="#{c.id}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputLabel value="LABEL" />
+				</f:facet>
+				<h:outputText value="#{c.label}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputLabel value="DESC" />
+				</f:facet>
+				<h:outputText value="#{c.description}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">
+					<h:outputLabel value="PRIX" />
+				</f:facet>
+				<h:outputText value="#{c.price}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Action</f:facet>
+				<h:commandLink value="Ajouter" action="#{caddie.ajouter(c)}" />  
+			</h:column>
+			
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>
