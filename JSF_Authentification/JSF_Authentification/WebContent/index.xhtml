@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"     
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      <!-- Ci dessus 3 documents XML dans un meme XML -->
+ 
+    <h:head>
+    	<title>Login Form</title>
+    </h:head>
+    <h:body bgcolor="white">
+    	<h3>Login Here</h3>
+    	<h:form id="login-form">
+    		<h:outputText value="username:" />
+    		<h:inputText value="#{loginBean.username}" id="username" />
+    		<br/>
+    		<h:outputText value="password" />
+    		<h:inputSecret value="#{loginBean.password}" id="password" />
+    		<br/>
+    		<h:commandButton id="button" value="login" action="#{loginBean.doLogin}" />
+    		<br/>
+    		<h:commandLink action="#{navigationBean.redirectToInfo}" value="Info page"/>
+    		<br/>
+    		<h:message />
+    		<br/>
+    		
+    	</h:form>
+    	    </h:body>
+</html>
