@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"     
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      <!-- Ci dessus 3 documents XML dans un meme XML -->
+ 
+    <h:head>
+    	<title>JSF 2.2 Hello World</title>
+    </h:head>
+    <h:body bgcolor="white">
+    <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+    <ui:define name="content">
+      <h:form>
+      	<h:panelGrid columns="2">
+      		<h:outputText value="Name"/>
+      		<h:inputText value="#{loginBean.name}" />
+      		<h:outputText value="Password" />
+      		<h:inputSecret value="#{loginBean.password}" />
+      	</h:panelGrid>
+      	<h:commandButton action="welcome" value="login" />
+
+    	</h:form>
+    	    </ui:define>
+    	    	</ui:composition>
+   	</h:body>
+</html>
