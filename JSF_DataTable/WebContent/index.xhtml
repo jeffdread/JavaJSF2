@@ -1,0 +1,70 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+	<h:outputStylesheet library="css" name="table-style.css" />
+</h:head>
+<h:body bgcolor="white">
+	<h1>Create a new Client</h1>
+	<hr />
+	<h:form>
+		<table>
+		 <tr>
+			<td><h:outputLabel value="NOM : " /></td>
+			<td><h:inputText value="#{clientController.client.nom}" /></td>
+		  </tr>
+			<tr>
+			<td><h:outputLabel value="PRENOM : " /></td>
+		<td><h:inputText value="#{clientController.client.prenom}" /></td>
+			</tr>
+		</table>
+		<h:commandButton value="New Client"
+			action="#{clientController.createClient}" />
+	</h:form>
+
+	<hr />
+	<h1>Liste des clients</h1>
+	<hr />
+<h:form>
+	<h:dataTable value="#{clientController.clientList}" var="c"
+		styleClass="client-table" headerClass="client-table-header"
+		rowClasses="client-table-odd-row,client-table-even-row">
+
+		<h:column>
+			<!-- column header -->
+			<f:facet name="header">
+				<h:outputLabel value="ID" />
+			</f:facet>
+			<!-- row record -->
+			<h:inputText value="#{c.id}" size="10" rendered="#{c.editable}" />
+			<h:outputText value="#{c.id}" rendered="#{not c.editable}" />		</h:column>
+
+		<h:column>
+			<f:facet name="header">
+				<h:outputLabel value="NOM" />
+			</f:facet>
+			<h:inputText value="#{c.nom}" size="10" rendered="#{c.editable}" />
+			<h:outputText value="#{c.nom}" rendered="#{not c.editable}" />
+		</h:column>
+
+		<h:column>
+		  <f:facet name="header">
+			<h:outputLabel value="PRENOM" />
+		  </f:facet>
+		  <h:inputText value="#{c.prenom}" size="10" rendered="#{c.editable}" />
+		  <h:outputText value="#{c.prenom}" rendered="#{not c.editable}" />
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">Action</f:facet>
+<h:commandLink value="Edit" action="#{clientController.editClient(c)}" rendered="#{not c.editable}" />
+
+		</h:column>
+	</h:dataTable>
+	
+     <h:commandButton value="Save Changes" action="#{clientController.saveAction()}" />
+</h:form>	
+</h:body>
+</html>
